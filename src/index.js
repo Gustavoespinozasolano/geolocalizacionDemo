@@ -3,6 +3,7 @@ const engine= require('ejs-mate');
 const path = require('path');
 const socketIO= require('socket.io');
 const http = require('http');
+var PORT = process.env.PORT || 5000;
 
 //iniciando server
 const app=express();
@@ -26,6 +27,6 @@ app.use(express.static(path.join(__dirname,'public')));
 
 
 
-server.listen(4000,() =>{
+server.listen(PORT,() =>{
     console.log('Server on port 3000');
 });

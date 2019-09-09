@@ -25,11 +25,11 @@ map.on('locationfound', e => {
 });
 
 socket.on('newUserCoordinates', (coords) => {
-    debugger;
-    console.log('Neewwwww');
-    const marker2=L.marker([coords.lat + 20,coords.lng + 20]);
-marker2.bindPopup('Help There!');
-map.addLayer(marker2);
+
+
+    const marker2=L.marker([coords.lat,coords.lng]);
+    marker2.bindPopup('Help There!');
+    map.addLayer(marker2);
 
 });
 
