@@ -36,11 +36,14 @@ function mostrarUbicacion (ubicacion) {
   console.log(`longitud: ${ lng } | latitud: ${ lat }`);
   const coords=[lat,lng];
   const marker=L.marker(coords);
-  
+  var obj={
+    lat:lat,
+    lng:lng
+  };
   marker.bindPopup('new Ubicacion');
   map.addLayer(marker);
   console.log(coords);
-  socket.emit('usserCoordenates',coords);
+  socket.emit('usserCoordenates',obj);
 }
 /*setInterval(function() {
     map.on('locationfound', e => {
