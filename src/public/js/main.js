@@ -9,7 +9,13 @@ var urlTile='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);*/
 
-
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function mostrarUbicacion (ubicacion) {
+    const lng = ubicacion.coords.longitude;
+    const lat = ubicacion.coords.latitude;
+    console.log(`longitud: ${ lng } | latitud: ${ lat }`);
+  });
+  }
 
 L.tileLayer(urlTile).addTo(map);
 map.locate({enableHighAccuracy:true});
@@ -23,20 +29,37 @@ map.on('locationfound', e => {
     socket.emit('usserCoordenates',e.latlng);
     
 });
+const watcher = navigator.geolocation.watchPosition(mostrarUbicacion);
 
-setInterval(function() {
+setTimeout(() => {
+  navigator.geolocation.clearWatch(watcher);
+}, 5000);
+
+function mostrarUbicacion (ubicacion) {
+  // ... realizar un proceso cada que cambie la ubicación del usuario
+  const lng = ubicacion.coords.longitude;
+  const lat = ubicacion.coords.latitude;
+  console.log(`longitud: ${ lng } | latitud: ${ lat }`);
+  const marker=L.marker(coords);
+  const coords=[lat,lng];
+  marker.bindPopup('new Ubicacion');
+  map.addLayer(marker);
+  console.log(coords);
+  socket.emit('usserCoordenates',coords);
+}
+/*setInterval(function() {
     map.on('locationfound', e => {
         console.log(e);
         const coords=[e.latlng.lat,e.latlng.lng];
         const marker=L.marker(coords);
         marker.bindPopup('new Ubicacion');
         map.addLayer(marker);
-        console.log(e.lating);
+        console.log(coords);
         socket.emit('usserCoordenates',e.latlng);
         
     });
 
-}, 5000);
+}, 5000);*/
 
 socket.on('newUserCoordinates', (coords) => {
 
