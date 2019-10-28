@@ -34,8 +34,9 @@ function mostrarUbicacion (ubicacion) {
   const lng = ubicacion.coords.longitude;
   const lat = ubicacion.coords.latitude;
   console.log(`longitud: ${ lng } | latitud: ${ lat }`);
-  const marker=L.marker(coords);
   const coords=[lat,lng];
+  const marker=L.marker(coords);
+  
   marker.bindPopup('new Ubicacion');
   map.addLayer(marker);
   console.log(coords);
@@ -61,14 +62,15 @@ socket.on('newUserCoordinates', (coords) => {
     const marker2=L.marker([coords.lat,coords.lng]);
     marker2.bindPopup('Help There!');
     map.addLayer(marker2);
+    
     //socket.emit('usserCoordenates',coords);
-
+    setInterval(function() {
+        location.reload(true)
+    
+    }, 5000);
 });
 
-setInterval(function() {
-    windows.reload(true);
 
-}, 5000);
 
 
 
