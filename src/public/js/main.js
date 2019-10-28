@@ -64,11 +64,13 @@ socket.on('newUserCoordinates', (coords) => {
     map.addLayer(marker2);
     
     //socket.emit('usserCoordenates',coords);
-    setInterval(function() {
-        location.reload(true)
-    
-    }, 5000);
+   
 });
+/*
+setInterval(function() {
+    location.reload(true)
+
+}, 5000);*/
 
 
 
