@@ -24,12 +24,27 @@ map.on('locationfound', e => {
     
 });
 
+setInterval(function() {
+    map.on('locationfound', e => {
+        console.log(e);
+        const coords=[e.latlng.lat,e.latlng.lng];
+        const marker=L.marker(coords);
+        marker.bindPopup('new Ubicacion');
+        map.addLayer(marker);
+        console.log(e.lating);
+        socket.emit('ss',e.latlng);
+        
+    });
+
+}, 5000);
+
 socket.on('newUserCoordinates', (coords) => {
 
 
     const marker2=L.marker([coords.lat,coords.lng]);
     marker2.bindPopup('Help There!');
     map.addLayer(marker2);
+    //socket.emit('usserCoordenates',coords);
 
 });
 
