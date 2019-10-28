@@ -32,7 +32,7 @@ setInterval(function() {
         marker.bindPopup('new Ubicacion');
         map.addLayer(marker);
         console.log(e.lating);
-        socket.emit('ss',e.latlng);
+        socket.emit('usserCoordenates',e.latlng);
         
     });
 
