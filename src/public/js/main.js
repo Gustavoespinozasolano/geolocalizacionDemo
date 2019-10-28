@@ -9,13 +9,7 @@ var urlTile='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);*/
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function mostrarUbicacion (ubicacion) {
-    const lng = ubicacion.coords.longitude;
-    const lat = ubicacion.coords.latitude;
-    console.log(`longitud: ${ lng } | latitud: ${ lat }`);
-  });
-  }
+
 
 L.tileLayer(urlTile).addTo(map);
 map.locate({enableHighAccuracy:true});
@@ -70,6 +64,13 @@ socket.on('newUserCoordinates', (coords) => {
     //socket.emit('usserCoordenates',coords);
 
 });
+
+setInterval(function() {
+    windows.reload(true);
+
+}, 5000);
+
+
 
 /*
 const marker=L.marker([-12.0451677,-76.9767837,17]);

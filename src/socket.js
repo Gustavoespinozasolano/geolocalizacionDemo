@@ -7,5 +7,6 @@ module.exports = io =>{
             //socket.broadcast.emit('newUserCoordinates', coords);
             socket.broadcast.emit('newUserCoordinates',coords);
         } );
+        
     });
 }
