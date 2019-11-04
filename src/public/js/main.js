@@ -4,14 +4,7 @@ const map=L.map('map-template').setView([-12.0451677,-76.9767837,17],13);
 
 const socket= io();
 //openstreetmap/wiki/tile
-var urlTile='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-/*L.tileLayer(urlTile, {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);*/
 
-
-
-L.tileLayer(urlTile).addTo(map);
 map.locate({enableHighAccuracy:true});
 
 map.on('locationfound', e => {
@@ -23,13 +16,8 @@ map.on('locationfound', e => {
     socket.emit('usserCoordenates',e.latlng);
     
 });
-const watcher = navigator.geolocation.watchPosition(mostrarUbicacion);
 
-setTimeout(() => {
-  navigator.geolocation.clearWatch(watcher);
-}, 5000);
-
-function mostrarUbicacion (ubicacion) {
+function animar () {
   // ... realizar un proceso cada que cambie la ubicación del usuario
   const lng = ubicacion.coords.longitude;
   const lat = ubicacion.coords.latitude;
@@ -44,7 +32,58 @@ function mostrarUbicacion (ubicacion) {
   map.addLayer(marker);
   console.log(coords);
   socket.emit('usserCoordenates',obj);
+
+  navigator.geolocation.getCurrentPosition(function(position) 
+	{
+      				
+	var newcoords=[position.coords.latitude,position.coords.longitude];
+	 var  newmarker=L.marker(newcoords);
+    //var datos='<?php echo $_SESSION["datos"]; ?>';
+    newmarker.bindPopup("vsdsdfd");
+    mymap.addLayer(newmarker);
+    var obj={
+      lat:position.coords.latitude,
+      lng:position.coords.longitude
+    };
+    //send(position.coords.latitude+","+position.coords.longitude+","+datos);
+    socket.emit('usserCoordenates',obj);
+   
+  });    
+
+
+
+
+
+
 }
+
+
+//const watcher = navigator.geolocation.watchPosition(mostrarUbicacion);
+
+setTimeout(() => {
+  animar();
+}, 5000);
+
+
+function checkResume()
+{
+    var current=new Date().getTime();
+    if(current-timestamp>100)
+    {
+        var event=document.createEvent("Events");
+        event.initEvent("focus",true,true);
+        document.dispatchEvent(event);
+    }
+    timestamp=current;
+}
+
+window.setInterval(checkResume,1);
+document.addEventListener("focus",function()
+{
+    animar();
+},false);
+
+
 /*setInterval(function() {
     map.on('locationfound', e => {
         console.log(e);
