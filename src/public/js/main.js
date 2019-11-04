@@ -19,19 +19,6 @@ map.on('locationfound', e => {
 
 function animar () {
   // ... realizar un proceso cada que cambie la ubicación del usuario
-  const lng = ubicacion.coords.longitude;
-  const lat = ubicacion.coords.latitude;
-  console.log(`longitud: ${ lng } | latitud: ${ lat }`);
-  const coords=[lat,lng];
-  const marker=L.marker(coords);
-  var obj={
-    lat:lat,
-    lng:lng
-  };
-  marker.bindPopup('new Ubicacion');
-  map.addLayer(marker);
-  console.log(coords);
-  socket.emit('usserCoordenates',obj);
 
   navigator.geolocation.getCurrentPosition(function(position) 
 	{
