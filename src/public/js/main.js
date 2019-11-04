@@ -27,7 +27,7 @@ function animar () {
 	 var  newmarker=L.marker(newcoords);
     //var datos='<?php echo $_SESSION["datos"]; ?>';
     newmarker.bindPopup("vsdsdfd");
-    mymap.addLayer(newmarker);
+    map.addLayer(newmarker);
     var obj={
       lat:position.coords.latitude,
       lng:position.coords.longitude
