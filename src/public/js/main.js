@@ -64,7 +64,7 @@ setTimeout(() => {
   animar();
 }, 5000);
 
-
+var timestamp=new Date().getTime();
 function checkResume()
 {
     var current=new Date().getTime();
