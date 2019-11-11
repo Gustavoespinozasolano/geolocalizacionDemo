@@ -1,0 +1,32 @@
+<img class="rounded-circle mx-auto d-block logo m-4" src="/img/logo.png" alt="Logo">
+<div class="row">
+   <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">
+        <h1 class="h4">
+          Ingresar
+        </h1>
+      </div>
+      
+      <div class="card-body">
+        <form action="/users/signin" method="POST">
+          <div class="form-group">
+            <label>Celular</label>
+            <input type="text" class="form-control" name="celular" placeholder="Ingrese su celular" autofocus>
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Ingresar 
+          </button>
+             <div class="text-center">
+          <a class="d-block small mt-3" href="/users/signup">Registrese</a>
+     
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

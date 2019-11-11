@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">
+        Datos del Usuario
+      </div>
+      <div class="card-body">
+        <form action="/users/signup" method="POST">
+          <div class="form-group">
+                  <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputName">Nombres</label>
+                <input class="form-control"  name="nombres" aria-describedby="nameHelp" placeholder="Ingrese sus nombres" value="{{nombres}}">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleInputLastName">Apellidos</label>
+                <input class="form-control"  name="apellidos" type="text" aria-describedby="nameHelp" placeholder="Ingrese sus apellidos" value="{{apellidos}}">
+              </div>
+            </div>
+
+
+          </div>
+               <div class="form-group">
+                  <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputName">DNI</label>
+                <input class="form-control"  name="dni" aria-describedby="nameHelp" placeholder="Ingrese su DNI" value="{{dni}}">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleInputLastName">Celular</label>
+                <input class="form-control" name="celular" type="text" aria-describedby="nameHelp" placeholder="Ingrese su celular" value="{{celular}}">
+              </div>
+            </div>
+
+
+          </div>
+
+              <div class="form-group">
+                  <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputName">Contraseña</label>
+                <input class="form-control"  name="password" type="password"  aria-describedby="nameHelp" placeholder="Ingrese su contraseña" value="{{password}}">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleInputLastName">Confirmar contraseña</label>
+                <input class="form-control"  name="confirm_password" type="password" aria-describedby="nameHelp" placeholder="Ingrese su celular" value="{{confirm_password}}">
+              </div>
+            </div>
+
+
+          </div>
+      
+          <button class="btn btn-primary btn-block">
+            Registrar
+          </button>
+        </form>
+          <div class="text-center">
+            <a class="d-block small mt-3" href="/users/signin">Login Page</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

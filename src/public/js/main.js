@@ -10,7 +10,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
   id: 'mapbox.streets'
 }).addTo(map);
 const socket= io();
-//openstreetmap/wiki/tile
+
 
 map.locate({enableHighAccuracy:true});
 
@@ -18,7 +18,8 @@ map.on('locationfound', e => {
     console.log(e);
     const coords=[e.latlng.lat,e.latlng.lng];
     const marker=L.marker(coords);
-    marker.bindPopup('xx There!');
+    //console.log(nombres);
+    marker.bindPopup("Aqui Estoy!");
     map.addLayer(marker);
     socket.emit('usserCoordenates',e.latlng);
     
@@ -33,7 +34,7 @@ function animar () {
 	var newcoords=[position.coords.latitude,position.coords.longitude];
 	 var  newmarker=L.marker(newcoords);
     //var datos='<?php echo $_SESSION["datos"]; ?>';
-    newmarker.bindPopup("vsdsdfd");
+    newmarker.bindPopup("Aqui Estoy!");
     map.addLayer(newmarker);
     var obj={
       lat:position.coords.latitude,
@@ -96,7 +97,7 @@ socket.on('newUserCoordinates', (coords) => {
 
 
     const marker2=L.marker([coords.lat,coords.lng]);
-    marker2.bindPopup('Help There!');
+    marker2.bindPopup('Nuevo Chofer');
     map.addLayer(marker2);
     
     //socket.emit('usserCoordenates',coords);
